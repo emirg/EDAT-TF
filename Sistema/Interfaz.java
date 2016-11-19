@@ -92,7 +92,7 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
                     }
 
                     break;
-                case 5:
+                case 5: //Falta implementar
                     break;
 
                 case 6:
@@ -112,9 +112,9 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
                         System.out.println("Hubo algun problema en el traslado del barco");
                     }
                     break;
-                case 8:
+                case 8: //Falta implementar
                     break;
-                case 9:
+                case 9: //Falta implementar
                     break;
                 case 10:
                     System.out.print("Ingrese el nombre del puerto: ");
@@ -156,7 +156,7 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
                 case 17:
                     System.out.println(unSistema.estructuraPuertos());
                     break;
-                case 18:
+                case 18: //Falta implementar
                     //    System.out.println(unSistema.estructuraGrafos());
                     break;
                 case 0:
