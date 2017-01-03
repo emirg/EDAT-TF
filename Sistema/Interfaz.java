@@ -21,10 +21,10 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
             System.out.println("-----------Sistema de información para navegantes marítimos-----------" + "\n");
             System.out.println("Seleccione una de las siguientes opciones:" + "\n");
             System.out.println("1) Dar de alta un puerto" + "\n");
-            //  System.out.println("2) Dar de alta una ruta marítima" + "\n");
+            System.out.println("2) Dar de alta una ruta marítima" + "\n");
             System.out.println("3) Dar de alta un barco" + "\n");
             System.out.println("4) Dar de baja un puerto" + "\n");
-            //  System.out.println("5) Dar de baja una ruta marítima" + "\n");
+            System.out.println("5) Dar de baja una ruta marítima" + "\n");
             System.out.println("6) Mostrar puertos registrados ordenados alfabéticamente" + "\n");
             System.out.println("7) Transferir un barco dado de un puerto a otro" + "\n");
             // System.out.println("8) Verificar si existe camino entre dos puertos que no supere N millas" + "\n");
@@ -37,7 +37,7 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
             System.out.println("15) Mostrar cola de espera de un puerto dado" + "\n");
             System.out.println("16) Realizar carga de datos por defecto" + "\n");
             System.out.println("17) Ver estructura de AVL que almacena a puertos" + "\n");
-            //   System.out.println("18) Ver estructura de grafo que almacena a rutas marítimas" + "\n");
+            System.out.println("18) Ver estructura de grafo que almacena a rutas marítimas" + "\n");
             System.out.println("0) SALIR" + "\n");
             System.out.println("---------------------------------------------------------------------" + "\n");
             System.out.print("Opcion: ");
@@ -61,13 +61,13 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
                     break;
 
                 case 2:
-//                    System.out.println("Ingrese el nombre del primer puerto: ");
-//                    temp1 = TecladoIn.readLine();
-//                    System.out.println("Ingrese el nombre del segundo puerto: ");
-//                    temp2 = TecladoIn.readLine();
-//                    System.out.println("Ingrese la distancia entre los puertos: ");
-//                    aux = TecladoIn.readLineInt();
-//                    unSistema.darAltaRuta(temp1, temp2, aux);
+                    System.out.println("Ingrese el nombre del primer puerto: ");
+                    temp1 = TecladoIn.readLine();
+                    System.out.println("Ingrese el nombre del segundo puerto: ");
+                    temp2 = TecladoIn.readLine();
+                    System.out.println("Ingrese la distancia entre los puertos: ");
+                    aux = TecladoIn.readLineInt();
+                    unSistema.darAltaRuta(temp1, temp2, aux);
                     break;
 
                 case 3:
@@ -92,7 +92,13 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
                     }
 
                     break;
-                case 5: //Falta implementar
+                case 5: 
+                    System.out.println("Ingrese el puerto origen: ");
+                    temp1 = TecladoIn.readLine();
+                    System.out.println("Ingrese el puerto destino: ");
+                    temp2 = TecladoIn.readLine();
+                    unSistema.darBajaRuta(temp1, temp2);
+
                     break;
 
                 case 6:
@@ -156,14 +162,14 @@ public class Interfaz { //Esta es la version mas reciente (18/11/16 - 21:15)
                 case 17:
                     System.out.println(unSistema.estructuraPuertos());
                     break;
-                case 18: //Falta implementar
-                    //    System.out.println(unSistema.estructuraGrafos());
+                case 18:
+                    System.out.println(unSistema.estructuraGrafos());
                     break;
                 case 0:
                     break;
             }
 
-        } while (true);
+        } while (opcion != 0);
 
     }
 }

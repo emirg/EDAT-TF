@@ -19,7 +19,6 @@ public class Grafo {
     ////////////////////CONSTRUCTORES///////////////////////////
     public Grafo() {
         inicio = null;
-
     }
 
     /////////////////////METODOS////////////////////////////////
@@ -38,47 +37,79 @@ public class Grafo {
         boolean exito = false;
         NodoVert n1 = this.ubicarVertice(vert1);
         NodoVert n2 = this.ubicarVertice(vert2);
-        NodoAdy n = new NodoAdy(n2, etiqueta);
-        NodoAdy n3 = new NodoAdy(n1, etiqueta);
-        NodoAdy ultAdy = null;
-
-        if (n1.getPrimerAdy() == null) {
-            n1.setPrimerAdy(n);
-
-        } else {
-            ultAdy = n1.getPrimerAdy();
-            while (ultAdy.getSigAdyacente() != null) {
-                ultAdy = ultAdy.getSigAdyacente();
-            }
-
-            ultAdy.setSigAdyacente(n);
-
-        }
-        if (n2.getPrimerAdy() == null) {
-            n2.setPrimerAdy(n3);
-            exito = true;
-        } else {
-            ultAdy = n2.getPrimerAdy();
-            while (ultAdy.getSigAdyacente() != null) {
-                ultAdy = ultAdy.getSigAdyacente();
-            }
-
-            ultAdy.setSigAdyacente(n);
-
-            exito = true;
+        if (n1 != null && n2 != null && !existeArco(vert1, vert2)) {
+            n1.setPrimerAdy(new NodoAdy(n2, n1.getPrimerAdy(), etiqueta));
+            n2.setPrimerAdy(new NodoAdy(n1, n2.getPrimerAdy(), etiqueta));
         }
 
         return exito;
     }
 
-    public boolean existeCamino(String vert1, String vert2) {
-        boolean existe = false;
-        NodoVert n1 = ubicarVertice(vert1);
-        NodoVert n2 = ubicarVertice(vert2);
+//    public boolean eliminarVertice
+    public boolean eliminarArco(String vert1, String vert2) { //Elimina solo uno de los arcos dirigidos (en caso de querer eliminar un arco no dirigido se debera llamar nuevamente con argumentos invertidos)
+        boolean exito = false;
 
+        NodoVert ini = this.ubicarVertice(vert1), fin = this.ubicarVertice(vert2);
+
+        if (existeArco(vert1, vert2)) {
+            NodoAdy enlaceIni = this.enlace(ini, fin);
+            NodoAdy pre = this.preEnlace(ini, fin);
+            if (enlaceIni == ini.getPrimerAdy()) {
+                ini.setPrimerAdy(enlaceIni.getSigAdyacente());
+                enlaceIni.setSigAdyacente(null);
+                exito = true;
+            } else {
+                pre.setSigAdyacente(enlaceIni.getSigAdyacente());
+                enlaceIni.setSigAdyacente(null);
+                exito = true;
+            }
+        }
+
+        return exito;
+    }
+
+//    public boolean existeVertice
+    public boolean existeArco(String v1, String v2) {
+        boolean existe = false;
+        NodoVert ini = this.ubicarVertice(v1), fin = this.ubicarVertice(v2);
+
+        NodoAdy sig = ini.getPrimerAdy();
+        while (sig != null) {
+            if (sig.getVertice() == fin) {
+                existe = true;
+            }
+            sig = sig.getSigAdyacente();
+        }
         return existe;
     }
-  
+
+    @Override
+    public String toString() {
+        String res = "";
+        NodoVert ini = this.inicio;
+        while (ini != null) {
+            res = res + ini.getElem().getNombre() + " --> ";
+            NodoAdy iniA = ini.getPrimerAdy();
+            while (iniA != null) {
+                res = res + iniA.getVertice().getElem().getNombre() + " / ";
+                iniA = iniA.getSigAdyacente();
+            }
+            res = res + "\n";
+
+            ini = ini.getSigVertice();
+
+        }
+        return res;
+    }
+
+    // public boolean existeCamino(){}
+    // public Lista caminoMasCorto(){}
+    // public Lista caminoMasLargo(){}
+    // public Lista busquedaEnProfundidad(){}
+    // public Lista busquedaEnAnchura(){}
+    // public boolean esVacio(){}
+    // public Grafo clonar(){}
+    
     ///////////////////METODOS PRIVADOS/////////////////////////
     private NodoVert ubicarVertice(String buscado) {
         NodoVert aux = inicio;
@@ -89,4 +120,25 @@ public class Grafo {
 
     }
 
+    private NodoAdy enlace(NodoVert ini, NodoVert fin) {
+        boolean existe = false;
+        NodoAdy sig = ini.getPrimerAdy();
+        while (sig != null && sig.getVertice() != fin) {
+            sig = sig.getSigAdyacente();
+        }
+        return sig;
+    }
+
+    private NodoAdy preEnlace(NodoVert ini, NodoVert fin) { //Parece ser que funciona....
+        NodoAdy enlace = this.enlace(ini, fin);
+        NodoAdy pre = ini.getPrimerAdy();
+        if (enlace == ini.getPrimerAdy()) {
+            pre = null; //Si el nodo anterior es el vertice cabecera entonces devuelve null
+        } else {
+            while (enlace != null && pre.getSigAdyacente() != enlace) {
+                pre = pre.getSigAdyacente();
+            }
+        }
+        return pre;
+    }
 }

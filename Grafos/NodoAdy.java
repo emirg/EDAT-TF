@@ -24,6 +24,13 @@ public class NodoAdy {
 
     }
     
+    public NodoAdy(NodoVert n, NodoAdy a, int etiq) {
+        vertice = n;
+        sigAdyacente = a;
+        etiqueta = etiq;
+
+    }
+    
     /////////////////////METODOS////////////////////////////////
 
     public NodoVert getVertice() {

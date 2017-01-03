@@ -32,7 +32,7 @@ public class SistemaMaritimo {
     public boolean darAltaPuerto(String nombre, String pais, int cantDar) {
         Puerto p = new Puerto(nombre.toUpperCase(), pais, cantDar);
         boolean exito = tablaPuertos.insertar(p.getNombre(), p); //Consultar sobre clave
-        //rutas.insertarVertice(p);
+        this.rutasMaritimas.insertarVertice(nombre.toUpperCase(),p); //REvisar
 
         return exito;
     }
@@ -47,6 +47,11 @@ public class SistemaMaritimo {
     public boolean darBajaPuerto(String clave) {
         return tablaPuertos.eliminar(clave);
 
+    }
+    
+    public boolean darBajaRuta(String ini, String fin){
+        return this.rutasMaritimas.eliminarArco(ini, fin) && this.rutasMaritimas.eliminarArco(fin, ini);
+        
     }
 
     public String puertosAlfabeticamente() {
@@ -88,48 +93,48 @@ public class SistemaMaritimo {
         this.tablaPuertos.insertar("HELSINKI", p15);
         this.tablaPuertos.insertar("COPENHAGUE", p16);
         this.tablaPuertos.insertar("FLEKKEFJORD", p17);
-//        this.rutasMaritimas.insertarVertice("MAR DEL PLATA", p1);
-//        this.rutasMaritimas.insertarVertice("PUERTO MADRYN", p2);
-//        this.rutasMaritimas.insertarVertice("PORTO ALEGRE", p3);
-//        this.rutasMaritimas.insertarVertice("ARATU", p4);
-//        this.rutasMaritimas.insertarVertice("CIUDAD DEL CABO", p5);
-//        this.rutasMaritimas.insertarVertice("ACCRA", p6);
-//        this.rutasMaritimas.insertarVertice("LISBOA", p7);
-//        this.rutasMaritimas.insertarVertice("BARCELONA", p8);
-//        this.rutasMaritimas.insertarVertice("GIJON", p9);
-//        this.rutasMaritimas.insertarVertice("BORDEAUX", p10);
-//        this.rutasMaritimas.insertarVertice("BAR HARBOR", p11);
-//        this.rutasMaritimas.insertarVertice("AGUADILLA", p12);
-//        this.rutasMaritimas.insertarVertice("LONDRES", p13);
-//        this.rutasMaritimas.insertarVertice("BORGHOLM", p14);
-//        this.rutasMaritimas.insertarVertice("HELSINKI", p15);
-//        this.rutasMaritimas.insertarVertice("COPENHAGUE", p16);
-//        this.rutasMaritimas.insertarVertice("FLEKKEFJORD", p17);
-//        this.rutasMaritimas.insertarArco("MAR DEL PLATA", "PUERTO MADRYN", 578);
-//        this.rutasMaritimas.insertarArco("MAR DEL PLATA", "PORTO ALEGRE", 737);
-//        this.rutasMaritimas.insertarArco("PORTO ALEGRE", "CIUDAD DEL CABO", 4423);
-//        this.rutasMaritimas.insertarArco("PUERTO MADRYN", "CIUDAD DEL CABO", 4423);
-//        this.rutasMaritimas.insertarArco("CIUDAD DEL CABO", "ACCRA", 5082);
-//        this.rutasMaritimas.insertarArco("ACCRA", "LISBOA", 5425);
-//        this.rutasMaritimas.insertarArco("LISBOA", "BARCELONA", 965);
-//        this.rutasMaritimas.insertarArco("GIJON", "LISBOA", 538);
-//        this.rutasMaritimas.insertarArco("GIJON", "BORDEAUX", 332);
-//        this.rutasMaritimas.insertarArco("BAR HARBOR", "GIJON", 3115);
-//        this.rutasMaritimas.insertarArco("ARATU", "AGUADILLA", 3484);
-//        this.rutasMaritimas.insertarArco("AGUADILLA", "BAR HARBOR", 1822);
-//        this.rutasMaritimas.insertarArco("BORDEAUX", "LONDRES", 770);
-//        this.rutasMaritimas.insertarArco("COPENHAGUE", "LONDRES", 658);
-//        this.rutasMaritimas.insertarArco("FLEKKEFJORD", "COPENHAGUE", 354);
-//        this.rutasMaritimas.insertarArco("COPENHAGUE", "BORGHOLM", 239);
-//        this.rutasMaritimas.insertarArco("HELSINKI", "BORGHOLM", 392);
-//        this.rutasMaritimas.insertarArco("AGUADILLA", "LONDRES", 4451);
-//        this.rutasMaritimas.insertarArco("BAR HARBOR", "LONDRES", 3377);
-//        this.rutasMaritimas.insertarArco("PORTO ALEGRE", "ARATU", 1876);
-//        this.rutasMaritimas.insertarArco("ARATU", "ACCRA", 2963);
-//        this.rutasMaritimas.insertarArco("MAR DEL PLATA", "LISBOA", 6202);
-//        this.rutasMaritimas.insertarArco("CIUDAD DEL CABO", "BAR HARBOR", 7668);
-//        this.rutasMaritimas.insertarArco("AGUADILLA", "LISBOA", 3842);
-//        this.rutasMaritimas.insertarArco("BAR HARBOR", "BORDEAUX", 3311);
+        this.rutasMaritimas.insertarVertice("MAR DEL PLATA", p1);
+        this.rutasMaritimas.insertarVertice("PUERTO MADRYN", p2);
+        this.rutasMaritimas.insertarVertice("PORTO ALEGRE", p3);
+        this.rutasMaritimas.insertarVertice("ARATU", p4);
+        this.rutasMaritimas.insertarVertice("CIUDAD DEL CABO", p5);
+        this.rutasMaritimas.insertarVertice("ACCRA", p6);
+        this.rutasMaritimas.insertarVertice("LISBOA", p7);
+        this.rutasMaritimas.insertarVertice("BARCELONA", p8);
+        this.rutasMaritimas.insertarVertice("GIJON", p9);
+        this.rutasMaritimas.insertarVertice("BORDEAUX", p10);
+        this.rutasMaritimas.insertarVertice("BAR HARBOR", p11);
+        this.rutasMaritimas.insertarVertice("AGUADILLA", p12);
+        this.rutasMaritimas.insertarVertice("LONDRES", p13);
+        this.rutasMaritimas.insertarVertice("BORGHOLM", p14);
+        this.rutasMaritimas.insertarVertice("HELSINKI", p15);
+        this.rutasMaritimas.insertarVertice("COPENHAGUE", p16);
+        this.rutasMaritimas.insertarVertice("FLEKKEFJORD", p17);
+        this.rutasMaritimas.insertarArco("MAR DEL PLATA", "PUERTO MADRYN", 578);
+        this.rutasMaritimas.insertarArco("MAR DEL PLATA", "PORTO ALEGRE", 737);
+        this.rutasMaritimas.insertarArco("PORTO ALEGRE", "CIUDAD DEL CABO", 4423);
+        this.rutasMaritimas.insertarArco("PUERTO MADRYN", "CIUDAD DEL CABO", 4423);
+        this.rutasMaritimas.insertarArco("CIUDAD DEL CABO", "ACCRA", 5082);
+        this.rutasMaritimas.insertarArco("ACCRA", "LISBOA", 5425);
+        this.rutasMaritimas.insertarArco("LISBOA", "BARCELONA", 965);
+        this.rutasMaritimas.insertarArco("GIJON", "LISBOA", 538);
+        this.rutasMaritimas.insertarArco("GIJON", "BORDEAUX", 332);
+        this.rutasMaritimas.insertarArco("BAR HARBOR", "GIJON", 3115);
+        this.rutasMaritimas.insertarArco("ARATU", "AGUADILLA", 3484);
+        this.rutasMaritimas.insertarArco("AGUADILLA", "BAR HARBOR", 1822);
+        this.rutasMaritimas.insertarArco("BORDEAUX", "LONDRES", 770);
+        this.rutasMaritimas.insertarArco("COPENHAGUE", "LONDRES", 658);
+        this.rutasMaritimas.insertarArco("FLEKKEFJORD", "COPENHAGUE", 354);
+        this.rutasMaritimas.insertarArco("COPENHAGUE", "BORGHOLM", 239);
+        this.rutasMaritimas.insertarArco("HELSINKI", "BORGHOLM", 392);
+        this.rutasMaritimas.insertarArco("AGUADILLA", "LONDRES", 4451);
+        this.rutasMaritimas.insertarArco("BAR HARBOR", "LONDRES", 3377);
+        this.rutasMaritimas.insertarArco("PORTO ALEGRE", "ARATU", 1876);
+        this.rutasMaritimas.insertarArco("ARATU", "ACCRA", 2963);
+        this.rutasMaritimas.insertarArco("MAR DEL PLATA", "LISBOA", 6202);
+        this.rutasMaritimas.insertarArco("CIUDAD DEL CABO", "BAR HARBOR", 7668);
+        this.rutasMaritimas.insertarArco("AGUADILLA", "LISBOA", 3842);
+        this.rutasMaritimas.insertarArco("BAR HARBOR", "BORDEAUX", 3311);
         Barco b1 = new Barco("ARGOFICIAL", "PESQUERO", "ARGENTINA");
         Barco b2 = new Barco("INGOFICIAL", "PASAJERO", "INGLATERRA");
         Barco b3 = new Barco("SUDAFRICAOFICIAL", "CARGA", "SUDAFRICA");
@@ -212,7 +217,11 @@ public class SistemaMaritimo {
         return p.getEspera().toString();
     }
 
-//    public boolean darAltaRuta(String p1, String p2, int dist) {
-//        return this.rutasMaritimas.insertarArco(p1, p2, dist);
-//    }
+    public boolean darAltaRuta(String p1, String p2, int dist) {
+        return this.rutasMaritimas.insertarArco(p1, p2, dist);
+    }
+    
+    public String estructuraGrafos(){
+        return this.rutasMaritimas.toString();
+    }
 }
