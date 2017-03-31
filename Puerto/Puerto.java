@@ -7,20 +7,30 @@ package Puerto;
 
 import Barco.Barco;
 import ColaPrioridadBarcos.ColaPrio;
-import PuertosLista.Lista;
+
 
 /**
  *
  * @author grios
  */
 public class Puerto {
+  /*
+  La clase Puerto representara los puertos cargados en el sistema. De los puertos se almacenara
+  su nombre, el pais donde se encuentran, la cantidad de darsenas que contiene, un arreglo
+  que representan los barcos en cada darsena y una cola de prioridad que representa
+  los barcos en espera para poder ingresar a las darsenas del puerto.
+  La clase Puerto tambien sera utilizada en las rutas maritimas para poder representar
+  los lugares de llegada y origen de los viajes.
+  */
 
+    ////////////////////ATRIBUTOS///////////////////////////////
     private String nombre;
     private String pais;
     private int cantDar;
     private Barco[] darsenas;
     private ColaPrio barcosEspera;
 
+    ////////////////////CONSTRUCTORES///////////////////////////
     public Puerto() {
         nombre = null;
         pais = null;
@@ -45,6 +55,7 @@ public class Puerto {
         barcosEspera = new ColaPrio();
     }
 
+    /////////////////////METODOS////////////////////////////////
     public String getNombre() {
         return nombre;
     }
@@ -85,12 +96,12 @@ public class Puerto {
         return this.barcosEspera;
     }
 
-    public boolean ponerBarco(Barco b) {
+    public boolean ponerBarco(Barco b) { 
        return this.barcosEspera.insertar(b, b.getTipo());
 
     }
 
-    public boolean sacarBarcoDeDarsena(Barco b) {
+    public boolean sacarBarcoDeDarsena(Barco b) { //Saca un barco dado de la darsenas del puerto (Si esta en alguna)
         boolean exito = false;
         if (b != null) {
             for (int i = 0; i < darsenas.length; i++) {

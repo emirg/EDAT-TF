@@ -13,16 +13,41 @@ import Puerto.Puerto;
  */
 public class NodoVert {
 
+    /*
+    La clase NodoVert representara los nodos vertices de la clase Grafo.
+    Los nodos vertices son aquellos que representan los nodos (Puertos) de un grafo,
+    por lo tanto tendran un atributo para el elemento que representan y luego contiene
+    dos enlaces, uno hacia el siguiente nodo vertice que le sigue en la lista, y otro enlace
+    para enlazar la lista de nodos adyacentes que representaran los arcos del grafo
+     */
+
     ////////////////////ATRIBUTOS///////////////////////////////
-    private Puerto elem;
-    private NodoVert sigVertice;
-    private NodoAdy primerAdy;
+    private Puerto elem; //Elemento que contiene el nodo para representar que un nodo es un puerto
+    private NodoVert sigVertice; //Enlace con el siguiente vertice
+    private NodoAdy primerAdy; //Enlace con el primer nodo adyacente
 
     ////////////////////CONSTRUCTORES///////////////////////////
-    public NodoVert(Puerto elemento,NodoVert siguiente) {
+    public NodoVert(Puerto elemento, NodoVert siguiente,NodoAdy primer) {
+        elem = elemento;
+        sigVertice = siguiente;
+        primerAdy = primer;
+
+    }
+    
+    public NodoVert(Puerto elemento, NodoVert siguiente) {
         elem = elemento;
         sigVertice = siguiente;
         primerAdy = null;
+
+    }
+
+    public NodoVert(Puerto elemento) {
+        elem = elemento;
+        sigVertice = null;
+        primerAdy = null;
+    }
+
+    public NodoVert() {
 
     }
 

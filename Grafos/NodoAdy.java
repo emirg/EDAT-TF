@@ -11,10 +11,15 @@ package Grafos;
  */
 public class NodoAdy {
 
+    /*
+    La clase NodoAdy es utilizada para crear una lista de nodos adyacentes a los nodos
+    vertice de un grafo, donde los nodos adyacentes representaran un arco con el
+    nodo vertice al cual pertenecen, con el nodo vertice el cual representan.
+    */
     ////////////////////ATRIBUTOS///////////////////////////////
-    private NodoVert vertice;
-    private NodoAdy sigAdyacente;
-    private int etiqueta;
+    private NodoVert vertice; //Este sera el nodo el cual conectara con el nodo vertice que contiene la lista de adyacencia
+    private NodoAdy sigAdyacente; //Enlace con el siguiente nodo adyacente de la lista
+    private int etiqueta; //Este entero representara la etiqueta del arco entre los dos nodos
 
     ////////////////////CONSTRUCTORES///////////////////////////
     public NodoAdy(NodoVert n, int etiq) {
@@ -57,6 +62,7 @@ public class NodoAdy {
         this.etiqueta = etiq;
     }
     
+   
     
 
 }
