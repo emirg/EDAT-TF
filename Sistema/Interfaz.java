@@ -9,7 +9,14 @@ package Sistema;
  *
  * @author emiliano
  */
-public class Interfaz { 
+
+ /*
+TRABAJO FINAL - ESTRUCTURAS DE DATOS
+CURSADA 2015 - PUERTOS
+ALUMNO: EMILIANO RIOS GAVAGNIN - FAI 1113
+ */
+ 
+public class Interfaz {
 
     public static void main(String[] args) {
         SistemaMaritimo unSistema = new SistemaMaritimo();
