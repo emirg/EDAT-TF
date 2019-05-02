@@ -1,2 +1,2 @@
 # EDAT-TF
-Es necesaria la implentacion de Grafos para continuar
+Trabajo final de la asignatura Estructuras de Datos
